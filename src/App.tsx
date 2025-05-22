@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/site-header"
 import { useRoutes } from "react-router-dom"
 import { TailwindIndicator } from "./components/tailwind-indicator"
+import { TestTrpc } from "./components/TestTrpc"
 
 const routes = [{ path: "/", element: <Home /> }]
 
@@ -17,7 +18,9 @@ function Home() {
           into your apps. Free. Open Source. And Vite Ready.
         </p>
       </div>
-      <div></div>
+      <div className="w-full mt-8 p-4 border rounded-lg">
+        <TestTrpc />
+      </div>
     </section>
   )
 }
