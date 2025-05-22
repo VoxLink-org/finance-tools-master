@@ -1,7 +1,7 @@
 import { SiteHeader } from "@/components/site-header"
 import { useRoutes } from "react-router-dom"
 import { TailwindIndicator } from "./components/tailwind-indicator"
-import { TestTrpc } from "./components/TestTrpc"
+import { FinanceAssistant } from "./components/FinanceAssistant"
 
 const routes = [{ path: "/", element: <Home /> }]
 
@@ -19,7 +19,7 @@ function Home() {
         </p>
       </div>
       <div className="w-full mt-8 p-4 border rounded-lg">
-        <TestTrpc />
+        <FinanceAssistant />
       </div>
     </section>
   )
