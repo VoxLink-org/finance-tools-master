@@ -26,3 +26,4 @@ dist-ssr
 *.cache
 .env
 credits.db*
+server-dist/*

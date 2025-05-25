@@ -39,7 +39,11 @@ app.post(
       res.status(200).send();
     } catch (err) {
       console.error('Stripe webhook error:', err);
-      res.status(400).send(`Webhook Error: ${err.message}`);
+      if (err instanceof Error) {
+        res.status(400).send(`Webhook Error: ${err.message}`);
+      } else {
+        res.status(400).send('Webhook Error: Unknown error occurred');
+      }
     }
   }
 );

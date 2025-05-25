@@ -4,7 +4,13 @@
     "outDir": "server-dist",
     "rootDir": "server",
     "module": "commonjs",
-    "target": "es2019"
+    "moduleResolution": "node",
+    "target": "es2019",
+    "noEmit": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "allowImportingTsExtensions": false
   },
   "include": ["server/**/*.ts"],
   "exclude": ["node_modules"]
