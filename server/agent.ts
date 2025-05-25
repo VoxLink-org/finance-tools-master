@@ -7,7 +7,7 @@ import { Request, Response, NextFunction} from 'express';
 
 const openai = new OpenAI(
   {
-    baseURL: 'https://ark-cn-beijing.bytedance.net/api/v3/',
+    baseURL: 'https://ark.cn-beijing.volces.com/api/v3/',
     apiKey: process.env.OPENAI_API_KEY,
   },
 );
