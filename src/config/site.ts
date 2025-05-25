@@ -9,6 +9,10 @@ export const siteConfig = {
       title: "Home",
       href: "/",
     },
+    {
+      title: "Demo",
+      href: "/demo",
+    }
   ],
   links: {
     youtube: "https://youtube.com/@m6io",

@@ -1,7 +1,6 @@
-import { initTRPC } from '@trpc/server';
 import { z } from 'zod';
-
-const t = initTRPC.create();
+import { creditRouter } from './credit';
+import { t } from './trpc-instance';
 
 export const appRouter = t.router({
   greeting: t.procedure
@@ -11,6 +10,7 @@ export const appRouter = t.router({
         text: `Hello ${input.name ?? 'world'}`,
       };
     }),
+  credit: creditRouter
 });
 
 export type AppRouter = typeof appRouter;
