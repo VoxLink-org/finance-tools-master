@@ -6,9 +6,11 @@ import cors from 'cors';
 import { agent } from './agent';
 import { handleStripeWebhook } from './credit';
 import Stripe from 'stripe';
+import { sse } from './sse';
 
 
 const app = express();
+app.use(cors());
 
 // Stripe webhook endpoint
 app.post(
@@ -48,9 +50,9 @@ app.post(
   }
 );
 
+app.all('/sse', sse);
+app.all('/messages', sse);
 
-
-app.use(cors());
 app.use(express.json()); // Middleware to parse JSON bodies
 
 
@@ -72,4 +74,5 @@ app.listen(port, () => {
   console.log(`tRPC server running on port ${port}`);
   console.log(`CopilotKit endpoint available at /api/copilotkit (requires LLM configuration)`);
   console.log(`Stripe webhook endpoint available at /api/stripe-webhook`);
+  console.log(`SSE endpoint available at /sse`);
 });

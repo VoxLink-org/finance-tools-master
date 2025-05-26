@@ -6,6 +6,10 @@ import { Resend } from 'resend';
 const JWT_SECRET = process.env.JWT_SECRET;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
+interface IJwtPayload extends jwt.JwtPayload {
+  email: string;
+  // You can add more claims to the payload if needed, e.g., userId, roles
+}
 
 export async function sendJWTToClient(email: string, extraMsg?: string): Promise<string> {
   if (!JWT_SECRET) {
@@ -15,13 +19,13 @@ export async function sendJWTToClient(email: string, extraMsg?: string): Promise
     throw new Error('RESEND_API_KEY is not defined in environment variables. Please use re_SJ4Uhdvn_A1ws38cyvotgSw7G2vPcNYuq for testing or set your own.');
   }
 
-  const payload = {
+  const payload:IJwtPayload = {
     email: email,
     // You can add more claims to the payload if needed, e.g., userId, roles
   };
 
-  const expiresIn = '90d';
-  // Token expires in 1 hour (you can adjust this as needed)
+  const expiresIn = '365d';
+  // Token expires in 365d (you can adjust this as needed)
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn });
 
   // Send email
@@ -46,4 +50,20 @@ export async function sendJWTToClient(email: string, extraMsg?: string): Promise
   }
 
   return token;
+}
+
+
+export function verifyJWT(token: string): IJwtPayload | null  {
+  if (!JWT_SECRET) {
+    throw new Error('JWT_SECRET is not defined in environment variables.');
+  }
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    return decoded as IJwtPayload;
+  } catch (error) {
+    console.error('Error verifying JWT token:', error);
+    // Decide if you want to throw an error here or just log it
+    // For now, we'll just log it and return null
+    return null;
+  }
 }

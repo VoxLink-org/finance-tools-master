@@ -59,6 +59,7 @@ export const agent =(req: Request, res: Response,  next: NextFunction) => {
     const handler = copilotRuntimeNodeHttpEndpoint({
       endpoint: '/api/copilotkit',
       runtime,
+      // serviceAdapter: googleGenerativeAIAdapter
       serviceAdapter,
     });
 
