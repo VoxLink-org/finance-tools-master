@@ -52,6 +52,8 @@ app.post(
 
 app.all('/sse', sse);
 app.all('/messages', sse);
+// app.all('/register', sse);
+// app.all('/.well-known/oauth-authorization-server', sse);
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
@@ -69,7 +71,7 @@ app.use(
 );
 
 app.all('/', (req, res) => {
-  res.status(200).send('Hello from Finance tools MCP!');
+  res.status(200).send('Hello from CopilotKit!');
 });
 
 const port = process.env.PORT || 3001;

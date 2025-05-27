@@ -4,7 +4,7 @@ import { verifyJWT } from './jwt-generate';
 
 
 function checkJWT(req: Request, res: Response) {
-    const token = req.headers.authorization?.split(' ')[1] || req.query.jwt?.toString();
+    const token = (req.headers.jwt as string) || req.query.jwt?.toString();
     if (!token) {
         res.status(401).send('Unauthorized');
         return;
@@ -21,7 +21,7 @@ function checkJWT(req: Request, res: Response) {
 export const sse = (req: Request, res: Response, next: NextFunction) => {
   const targetUrl = new URL(req.originalUrl, 'http://0.0.0.0:8000');
 
-  if (req.path !== '/sse' && !checkJWT(req, res)) {
+  if (req.path.startsWith('/messages') && !checkJWT(req, res)) {
     return;
   }
   
