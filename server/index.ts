@@ -52,8 +52,8 @@ app.post(
 
 app.all('/sse', sse);
 app.all('/messages', sse);
-// app.all('/register', sse);
-// app.all('/.well-known/oauth-authorization-server', sse);
+app.all('/register', sse);
+app.all('/.well-known/oauth-authorization-server', sse);
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
