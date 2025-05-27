@@ -68,6 +68,9 @@ app.use(
   })
 );
 
+app.all('/', (req, res) => {
+  res.status(200).send('Hello from Finance tools MCP!');
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
