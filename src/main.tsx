@@ -9,7 +9,7 @@ import "@copilotkit/react-ui/styles.css"
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Router>
-      <CopilotKit runtimeUrl="http://localhost:3001/api/copilotkit" >
+      <CopilotKit runtimeUrl={RUNTIME_URL} >
         <App />
       </CopilotKit>
     </Router>

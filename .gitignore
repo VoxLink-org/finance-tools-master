@@ -27,3 +27,4 @@ dist-ssr
 .env
 credits.db*
 server-dist/*
+rate-limiter.db*

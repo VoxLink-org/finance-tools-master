@@ -2,6 +2,23 @@
 
 import * as React from "react";
 
+interface IContent {
+  type: 'text';
+  text: string;
+}
+
+interface IResult {
+  content: IContent[];
+  isError: boolean;
+}
+
+function formatResult(result: IResult):string{
+  if (!result || result.isError) return "Error";
+  const text = result.content.map((item) => item.text).join("\n");
+  return text
+  
+}
+
 interface ToolCallProps {
   status: "complete" | "inProgress" | "executing";
   name?: string;
@@ -68,7 +85,7 @@ export default function MCPToolCall({
             <div>
               <div className="text-gray-400 mb-2">Result:</div>
               <pre className="whitespace-pre-wrap max-h-[200px] overflow-auto">
-                {format(result)}
+                {formatResult(result)}
               </pre>
             </div>
           )}

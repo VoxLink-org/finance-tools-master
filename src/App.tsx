@@ -7,7 +7,7 @@ import { Demo } from "./pages/demo"
 
 const routes = [
   { path: "/", element: <Home /> },
-  { path: "/demo", element: <Demo /> },
+  { path: "/playground", element: <Demo /> },
 ]
 
 
